@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta name="google-site-verification" content="AQdOONs1VQmSlJRl0Vcj5VeTO7-aNpNhPcA5X5G1n1Q" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MBS Web Agency — Web Developer & Designer</title>
@@ -680,6 +681,8 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:64px 60p
   </div>
 </footer>
 
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
 <script>
 /* CURSOR */
 const C=document.getElementById('cur'), R=document.getElementById('cring');
@@ -730,6 +733,24 @@ document.getElementById('nlb').addEventListener('click',function(){
   this.textContent='✓ Done!';
   setTimeout(()=>{this.textContent='Subscribe';},2500);
 });
+
+(function() {
+    emailjs.init("kx5hy8gqdOmRu-mQq");
+  })();
+
+  document.addEventListener("submit", function(e) {
+    if (e.target.id === "contact-form") {
+      e.preventDefault();
+
+      emailjs.send("service_arhse62", "template_06vxsau", {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        message: document.getElementById("message").value
+      }).then(() => {
+        alert("Email sent!");
+      });
+    }
+  });
 </script>
 </body>
 </html>
